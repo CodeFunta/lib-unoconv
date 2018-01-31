@@ -1,0 +1,28 @@
+{
+  "name": "lib-unoconv",
+  "version": "0.1.0",
+  "description": "A node.js wrapper for converting documents with unoconv.",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lvyue/lib-unoconv.git"
+  },
+  "keywords": [
+    "unoconv",
+    "lib-unoconv",
+    "document",
+    "conversion",
+    "office-convert"
+  ],
+  "author": "Yue Lv <lvyue@mnzld.net>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lvyue/lib-unoconv/issues"
+  },
+  "homepage": "https://github.com/lvyue/lib-unoconv#readme",
+  "dependencies": {
+    "debug": "^3.1.0",
+    "lodash": "^4.17.4",
+    "mime": "^2.2.0"
+  }
+}
