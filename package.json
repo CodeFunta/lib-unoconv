@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/lvyue/lib-unoconv#readme",
   "dependencies": {
+    "cross-spawn": "^6.0.4",
     "debug": "^3.1.0",
     "lodash": "^4.17.4",
     "mime": "^2.2.0"

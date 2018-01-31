@@ -2,6 +2,7 @@
 
 var _ = require('lodash'),
 	childProcess = require('child_process'),
+	spawn = require('cross-spawn'),
 	mime = require('mime'),
 	debug = require('debug')('unoconv');
 
@@ -50,16 +51,9 @@ unoconv.convert = function (file, outputFormat, options, callback) {
 		bin = options.bin;
 	}
 	debug('CMD:', bin + '  ' + args.join(' '));
-	child = childProcess.spawn(bin, args, function (err, stdout, stderr) {
-		if (err) {
-			return callback(err);
-		}
-
-		if (stderr) {
-			return callback(new Error(stderr.toString()));
-		}
-
-		callback(null, stdout);
+	child = spawn(bin, args);
+	child.on('error', function (err) {
+		return callback(new Error(err));
 	});
 
 	child.stdout.on('data', function (data) {
@@ -101,7 +95,7 @@ unoconv.listen = function (options) {
 		}
 	}
 
-	return childProcess.spawn(bin, args);
+	return spawn(bin, args);
 };
 
 /**
@@ -177,9 +171,9 @@ unoconv.detectSupportedFormats = function (options, callback) {
 		});
 
 		if (detectedFormats.document.length < 1 &&
-            detectedFormats.graphics.length < 1 &&
-            detectedFormats.presentation.length < 1 &&
-            detectedFormats.spreadsheet.length < 1) {
+			detectedFormats.graphics.length < 1 &&
+			detectedFormats.presentation.length < 1 &&
+			detectedFormats.spreadsheet.length < 1) {
 			return callback(new Error('Unable to detect supported formats'));
 		}
 
