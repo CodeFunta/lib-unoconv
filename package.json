@@ -1,6 +1,6 @@
 {
   "name": "lib-unoconv",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "A node.js wrapper for converting documents with unoconv.",
   "main": "index.js",
   "repository": {
