@@ -12,12 +12,12 @@ var unoconv = exports = module.exports = {};
  * Convert a document.
  *
  * @param {String} file
- * @param {String} outputFormat
+ * @param {String} format
  * @param {Object|Function} options
  * @param {Function} callback
  * @api public
  */
-unoconv.convert = function (file, outputFormat, options, callback) {
+unoconv.convert = function (file, format, options, callback) {
 	var args,
 		bin = 'unoconv',
 		child,
@@ -32,18 +32,18 @@ unoconv.convert = function (file, outputFormat, options, callback) {
 		options = {};
 	}
 	args = [
-		'-f' + outputFormat,
-		'--stdout'
+		'--format=' + format
 	];
 
 	if (options.port) {
-		args.push('-p' + options.port);
+		args.push('--port=' + options.port);
 	}
 
 	if (options.out) {
 		args.push('--output=' + options.out);
+	} else {
+		args.push('--stdout');
 	}
-
 
 	args.push(file);
 
