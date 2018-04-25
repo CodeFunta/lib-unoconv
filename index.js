@@ -45,6 +45,12 @@ unoconv.convert = function (file, format, options, callback) {
 		args.push('--stdout');
 	}
 
+	if (options.opt) {
+		args.push(options.opt);
+	}
+
+
+
 	args.push(file);
 
 	if (options.bin) {
